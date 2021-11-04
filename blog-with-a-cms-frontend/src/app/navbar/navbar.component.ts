@@ -11,5 +11,13 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+/* Set the width of the side navigation to 250px */
+ openNav() {
+  document.getElementById("mySidenav")!.style.width = "100%";
+}
 
+/* Set the width of the side navigation to 0 */
+ closeNav() {
+  document.getElementById("mySidenav")!.style.width = "0";
+}
 }
