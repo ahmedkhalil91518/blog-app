@@ -1,6 +1,12 @@
 <nav class="navbar navbar-expand navbar-dark bg-secondary">
   <div class="container-fluid d-flex">
-    <button type="button" class="btn btn-danger mx-2 d-block d-sm-none" (click)="openNav()"><i class="fas fa-bars"></i></button>
+    <button
+      type="button"
+      class="btn btn-danger mx-2 d-block d-sm-none"
+      (click)="openNav()"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
     <a class="navbar-brand flex-grow-1" href="#">Blog With A CMS</a>
     <div
       class="flex-grow-1 d-none d-sm-flex justify-content-between"
@@ -19,7 +25,18 @@
   </div>
 </nav>
 <div id="mySidenav" class="sidenav bg-secondary">
+  <a class="app-name" href="#">Blog With A CMS</a>
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+  <form class="m-3">
+    <input
+      class="form-control me-2"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+    />
+  </form>
+
+  <button type="button" class="btn btn-danger d-block m-auto">Signup/Login</button>
   <a href="#">About</a>
   <a href="#">Services</a>
   <a href="#">Clients</a>
