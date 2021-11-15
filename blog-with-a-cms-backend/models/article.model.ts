@@ -1,5 +1,4 @@
 import mongoose, { Schema } from 'mongoose';
-import Populate from '../utilities/autoPopulate';
 
 const articleSchema = new mongoose.Schema(
   {
@@ -15,17 +14,10 @@ const articleSchema = new mongoose.Schema(
         rating: { $in: [1, 2, 3, 4, 5] },
       },
     ],
+    comments: [],
   },
   { timestamps: true }
 );
-
-articleSchema
-  .pre('findOne', Populate('author'))
-  .pre('find', Populate('author'))
-  .pre('findOne', Populate('tags'))
-  .pre('find', Populate('tags'))
-  .pre('findOne', Populate('ratings'))
-  .pre('find', Populate('ratings'));
 
 const Article = mongoose.model('Article', articleSchema);
 

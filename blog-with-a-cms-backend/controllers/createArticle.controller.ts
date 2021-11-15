@@ -5,24 +5,20 @@ import Tag from '../models/tag.model';
 import User from '../models/user.model';
 
 export default (req: Request, res: Response) => {
-  let tags1: any;
-  let author: any;
-  let article: any;
   Tag.find(
     {
       _id: { $in: req.body.tagId },
     },
-    function (err: any, tag: any) {
-      tags1 = tag;
-      User.findById(req.body.userId, function (err: any, user: any) {
-        author = user;
-        article = new Article({
+    function (err, tag) {
+      User.findById(req.body.userId, function (err: unknown, user: unknown) {
+        const article = new Article({
           _id: new mongoose.Types.ObjectId(),
           name: req.body.name,
-          tags: tags1,
+          tags: tag,
           content: req.body.content,
-          author: author,
-          ratings: null,
+          author: user,
+          ratings: [],
+          comments: [],
         });
         article.save();
         res.send(article);

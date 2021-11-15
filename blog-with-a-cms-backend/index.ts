@@ -5,15 +5,14 @@ import bodyParser from 'body-parser';
 import createUserController from './controllers/createUser.controller';
 import createTagController from './controllers/createTag.controller';
 import createArticleController from './controllers/createArticle.controller';
+import createCommentController from './controllers/createComment.controller';
 
 dotenv.config();
 const app = express();
 const PORT = 8000;
 
-
-
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 main().catch((err) => console.log(err));
 
@@ -24,6 +23,7 @@ async function main() {
   app.post('/api/create-user', createUserController);
   app.post('/api/create-tag', createTagController);
   app.post('/api/create-article', createArticleController);
+  app.post('/api/create-comment', createCommentController);
 }
 
 app.listen(PORT, () => {
