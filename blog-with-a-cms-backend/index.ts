@@ -6,6 +6,7 @@ import createUserController from './controllers/createUser.controller';
 import createTagController from './controllers/createTag.controller';
 import createArticleController from './controllers/createArticle.controller';
 import createCommentController from './controllers/createComment.controller';
+import createRatingController from './controllers/createRating.controller';
 
 dotenv.config();
 const app = express();
@@ -24,6 +25,7 @@ async function main() {
   app.post('/api/create-tag', createTagController);
   app.post('/api/create-article', createArticleController);
   app.post('/api/create-comment', createCommentController);
+  app.post('/api/create-rating', createRatingController);
 }
 
 app.listen(PORT, () => {

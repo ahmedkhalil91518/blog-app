@@ -7,13 +7,7 @@ const articleSchema = new mongoose.Schema(
     tags: [{ type: Schema.Types.ObjectId, ref: 'Tag' }],
     content: String,
     author: { type: Schema.Types.ObjectId, ref: 'User' },
-    ratings: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        rating: { $in: [1, 2, 3, 4, 5] },
-      },
-    ],
+    ratings: [],
     comments: [],
   },
   { timestamps: true }
