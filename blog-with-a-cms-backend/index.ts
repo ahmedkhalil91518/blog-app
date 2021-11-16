@@ -1,7 +1,6 @@
 import * as dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
 import createUserController from './controllers/createUser.controller';
 import createTagController from './controllers/createTag.controller';
 import createArticleController from './controllers/createArticle.controller';
@@ -10,10 +9,10 @@ import createRatingController from './controllers/createRating.controller';
 
 dotenv.config();
 const app = express();
-const PORT = 8000;
+const PORT = 8001;
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 main().catch((err) => console.log(err));
 

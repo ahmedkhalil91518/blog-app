@@ -7,7 +7,7 @@ import User from '../models/user.model';
 export default (req: Request, res: Response) => {
   Tag.find(
     {
-      _id: { $in: req.body.tagId },
+      _id: { $in: req.body.tagId }, // tagId is an array
     },
     function (err, tag) {
       User.findById(req.body.userId, function (err: unknown, user: unknown) {
