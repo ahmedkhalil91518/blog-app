@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import User from '../models/user.model';
 
-export default async (req: Request, res: Response) => {
+export const createUser =  async (req: Request, res: Response) => {
   const user = new User({
     _id: new mongoose.Types.ObjectId(),
     firstName: req.body.firstName,

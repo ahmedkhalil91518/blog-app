@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import User from '../models/user.model';
 import Article from '../models/article.model';
 
-export default (req: Request, res: Response) => {
+export const createRating = (req: Request, res: Response) => {
   User.findById(req.body.userId, function (err: unknown, user: unknown) {
     const data = {
       _id: new mongoose.Types.ObjectId(),

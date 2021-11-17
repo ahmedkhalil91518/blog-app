@@ -4,7 +4,7 @@ import Article from '../models/article.model';
 import Tag from '../models/tag.model';
 import User from '../models/user.model';
 
-export default (req: Request, res: Response) => {
+export const createArticle = (req: Request, res: Response) => {
   Tag.find(
     {
       _id: { $in: req.body.tagId }, // tagId is an array

@@ -1,11 +1,11 @@
 import * as dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
-import createUserController from './controllers/createUser.controller';
-import createTagController from './controllers/createTag.controller';
-import createArticleController from './controllers/createArticle.controller';
-import createCommentController from './controllers/createComment.controller';
-import createRatingController from './controllers/createRating.controller';
+import * as userController from './controllers/user.controller';
+import * as tagController from './controllers/tag.controller';
+import * as articleController from './controllers/article.controller';
+import * as commentController from './controllers/comment.controller';
+import * as ratingController from './controllers/rating.controller';
 
 dotenv.config();
 const app = express();
@@ -20,11 +20,11 @@ async function main() {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   await mongoose.connect(process.env.MONGODB_CONNECTION_STRING!);
 
-  app.post('/api/create-user', createUserController);
-  app.post('/api/create-tag', createTagController);
-  app.post('/api/create-article', createArticleController);
-  app.post('/api/create-comment', createCommentController);
-  app.post('/api/create-rating', createRatingController);
+  app.post('/api/create-user', userController.createUser);
+  app.post('/api/create-tag', tagController.createTag);
+  app.post('/api/create-article', articleController.createArticle);
+  app.post('/api/create-comment', commentController.createComment);
+  app.post('/api/create-rating', ratingController.createRating);
 }
 
 app.listen(PORT, () => {
