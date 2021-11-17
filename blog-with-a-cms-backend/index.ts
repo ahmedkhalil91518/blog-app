@@ -25,6 +25,9 @@ async function main() {
   app.post('/api/create-article', articleController.createArticle);
   app.post('/api/create-comment', commentController.createComment);
   app.post('/api/create-rating', ratingController.createRating);
+  app.get('/api/read-article/:articleId', articleController.readArticle);
+  app.get('/api/read-all-articles-with-a-certain-tag/', articleController.readAllArticlesWithACertainTag);
+  app.get('/api/read-user/:userId', userController.readUser);
 }
 
 app.listen(PORT, () => {

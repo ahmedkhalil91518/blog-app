@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import User from '../models/user.model';
 
-export const createUser =  async (req: Request, res: Response) => {
+export const createUser = async (req: Request, res: Response) => {
   const user = new User({
     _id: new mongoose.Types.ObjectId(),
     firstName: req.body.firstName,
@@ -14,4 +14,10 @@ export const createUser =  async (req: Request, res: Response) => {
   });
   await user.save();
   res.send(user);
+};
+
+export const readUser = async (req: Request, res: Response) => {
+  User.findOne({ _id: req.params.userId }, (err: any, user: any) => {
+    res.send(user);
+  });
 };

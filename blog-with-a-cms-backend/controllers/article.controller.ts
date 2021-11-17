@@ -26,3 +26,26 @@ export const createArticle = (req: Request, res: Response) => {
     }
   );
 };
+
+export const readArticle = (req: Request, res: Response) => {
+  Article.findOne(
+    {
+      _id: req.params.articleId,
+    },
+    (err: any, article: any) => {
+      res.send(article);
+    }
+  );
+};
+
+export const readAllArticlesWithACertainTag = async (
+  req: Request,
+  res: Response
+) => {
+  Article.find(
+    { tags: { $elemMatch: { $eq: req.query.tagId } } },
+    (err: any, articles: any) => {
+      res.send(articles);
+    }
+  );
+};

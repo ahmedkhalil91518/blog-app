@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import Tag from '../models/tag.model';
 import mongoose from 'mongoose';
+import Article from '../models/article.model';
 
 export const createTag = async (req: Request, res: Response) => {
   const tag = new Tag({
