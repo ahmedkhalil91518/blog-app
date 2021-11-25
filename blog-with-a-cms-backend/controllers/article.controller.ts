@@ -1,8 +1,8 @@
-import { Request, Response } from 'express';
-import mongoose from 'mongoose';
-import Article from '../models/article.model';
-import Tag from '../models/tag.model';
-import User from '../models/user.model';
+import { Request, Response } from "express";
+import mongoose from "mongoose";
+import Article from "../models/article.model";
+import Tag from "../models/tag.model";
+import User from "../models/user.model";
 
 export const createArticle = (req: Request, res: Response) => {
   Tag.find(
@@ -28,10 +28,11 @@ export const createArticle = (req: Request, res: Response) => {
 };
 
 export const readArticle = (req: Request, res: Response) => {
-  Article.findOne(
+  Article.findOneAndUpdate(
     {
       _id: req.params.articleId,
     },
+    { $inc: { numbersSeen: 1 } },
     (err: any, article: any) => {
       res.send(article);
     }

@@ -9,6 +9,7 @@ const articleSchema = new mongoose.Schema(
     author: { type: Schema.Types.ObjectId, ref: 'User' },
     ratings: [],
     comments: [],
+    numbersSeen: { type: Number, default: 0 },
   },
   { timestamps: true }
 );
