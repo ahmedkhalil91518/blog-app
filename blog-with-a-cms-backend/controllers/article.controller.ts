@@ -50,3 +50,15 @@ export const readAllArticlesWithACertainTag = async (
     }
   );
 };
+
+export const readAllArticles = async (
+  req: Request,
+  res: Response
+) => {
+  Article.find(
+    {},
+    (err: any, articles: any) => {
+      res.send(articles);
+    }
+  );
+};

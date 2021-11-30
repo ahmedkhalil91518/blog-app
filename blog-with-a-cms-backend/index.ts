@@ -27,6 +27,8 @@ async function main() {
   app.get('/api/read-article/:articleId', articleController.readArticle);
   app.get('/api/read-all-articles-with-a-certain-tag/', articleController.readAllArticlesWithACertainTag);
   app.get('/api/read-user/:userId', userController.readUser);
+  app.get('/api/read-all-articles/', articleController.readAllArticles);
+
 }
 
 app.listen(PORT, () => {
