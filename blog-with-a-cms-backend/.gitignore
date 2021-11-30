@@ -116,3 +116,5 @@ dist
 .yarn/insta
 
 build
+
+uploadedFiles

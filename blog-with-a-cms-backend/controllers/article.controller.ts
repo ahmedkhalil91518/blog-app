@@ -51,14 +51,21 @@ export const readAllArticlesWithACertainTag = async (
   );
 };
 
-export const readAllArticles = async (
-  req: Request,
-  res: Response
-) => {
-  Article.find(
-    {},
-    (err: any, articles: any) => {
-      res.send(articles);
-    }
-  );
+export const readAllArticles = async (req: Request, res: Response) => {
+  Article.find({}, (err: any, articles: any) => {
+    res.send(articles);
+  });
+};
+
+export const uploadArticleMainImage = (req: Request, res: Response, next: any) => {
+  const file = req.file;
+  if (!file) {
+    const error = new Error("Please upload a file");
+    return next(error);
+  }
+  res.status(200).send({
+    statusCode: 200,
+    status: "success",
+    uploadedFile: file,
+  });
 };
