@@ -32,32 +32,46 @@ export const readArticle = (req: Request, res: Response) => {
     {
       _id: req.params.articleId,
     },
-    { $inc: { numbersSeen: 1 } },
-    (err: any, article: any) => {
+    { $inc: { numbersSeen: 1 } }
+  )
+    .populate("author")
+    .populate("tags")
+    .exec(function (err, article) {
+      if (err) return console.log(err);
+      console.log("The author is %s");
       res.send(article);
-    }
-  );
+    });
 };
 
 export const readAllArticlesWithACertainTag = async (
   req: Request,
   res: Response
 ) => {
-  Article.find(
-    { tags: { $elemMatch: { $eq: req.query.tagId } } },
-    (err: any, articles: any) => {
-      res.send(articles);
-    }
-  );
+  Article.find({ tags: { $elemMatch: { $eq: req.query.tagId } } })
+    .populate("author")
+    .populate("tags")
+    .exec(function (err, article) {
+      if (err) return console.log(err);
+      console.log("The author is %s");
+      res.send(article);
+    });
 };
 
 export const readAllArticles = async (req: Request, res: Response) => {
-  Article.find({}, (err: any, articles: any) => {
-    res.send(articles);
-  });
+  Article.find({})
+    .populate("author")
+    .populate("tags")
+    .exec(function (err, article) {
+      if (err) return console.log(err);
+      res.send(article);
+    });
 };
 
-export const uploadArticleMainImage = (req: Request, res: Response, next: any) => {
+export const uploadArticleMainImage = (
+  req: Request,
+  res: Response,
+  next: any
+) => {
   const file = req.file;
   if (!file) {
     const error = new Error("Please upload a file");

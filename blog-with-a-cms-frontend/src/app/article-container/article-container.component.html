@@ -1,1 +1,12 @@
-<div class="container"><h2>Latest Articles</h2></div>
+<div class="container">
+  <h2>Latest Articles</h2>
+  <div *ngIf="articlesList">
+      <div *ngFor="let article of articlesList">
+        <h3>{{article.name}}</h3>
+        <h4> by {{article.author.firstName}} {{article.author.lastName}}</h4>
+        <p>{{article.content}}</p>
+        <div>{{ calculateDiff(article.createdAt)}}</div>
+        <div>{{ article.comments.length}} comments</div>
+      </div>
+  </div>
+</div>
