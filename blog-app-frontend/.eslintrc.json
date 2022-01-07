@@ -6,7 +6,7 @@
       "files": ["*.ts"],
       "parserOptions": {
         "project": ["tsconfig.json"],
-        "tsconfigRootDir": "./blog-with-a-cms-frontend",
+        "tsconfigRootDir": "./blog-app-frontend",
         "sourceType": "module",
 
         "createDefaultProgram": true
