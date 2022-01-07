@@ -1,1 +1,1 @@
-# blog-with-a-cms
+# blog-app
